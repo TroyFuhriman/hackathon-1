@@ -4,7 +4,9 @@ import store from "../store.js";
 //Private
 function _draw() {
   let posts = store.State.posts;
-  console.log(posts);
+  let template = ""
+  posts.forEach(p => template += p.Template)
+  document.getElementById("posts").innerHTML = template
 }
 
 //Public
@@ -17,10 +19,10 @@ export default class PostsController {
     event.preventDefault()
     let formdata = event.target
     let post = {
-      title: formdata.title,
-      author: formdata.author,
-      genre: formdata.genre,
-      imgUrl: formdata.url
+      title: formdata.title.value,
+      author: formdata.author.value,
+      genre: formdata.genre.value,
+      imgUrl: formdata.url.value
     }
     postsService.newPost(post)
     formdata.reset
