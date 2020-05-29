@@ -7,6 +7,8 @@ const Post = new Schema(
     imgUrl: { type: String, required: true },
     genre: { type: String, required: true },
     author: { type: String, required: true },
+    upvotes: { type: Number, default: 0 },
+    downvotes: { type: Number, default: 0 }
   },
   { timestamps: true, toJSON: { virtuals: true } }
 );
