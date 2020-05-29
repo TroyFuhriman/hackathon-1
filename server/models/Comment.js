@@ -6,7 +6,9 @@ const Comment = new Schema(
   {
     description: { type: String, required: true },
     author: { type: String, required: true },
-    postId: { type: ObjectId, ref: "Post", required: true }
+    postId: { type: ObjectId, ref: "Post", required: true },
+    upvotes: { type: Number, default: 0 },
+    downvotes: { type: Number, default: 0 }
   },
   { timestamps: true, toJSON: { virtuals: true } }
 );

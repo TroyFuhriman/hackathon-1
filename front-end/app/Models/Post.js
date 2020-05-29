@@ -13,20 +13,25 @@ export default class Post {
 
     get Template() {
         return /*html*/ `
-    <div class="col-3">
+    <div class="col-3 mt-3">
     <div type="button" onclick="app.postsController.upVote('${this.id}')">upvote ${this.upVote}</div>
     <div type="button" onclick="app.postsController.downVote('${this.id}')">downvote ${this.downVote}
     </div>
 </div>
-<div class="col">
+<div class="col mt-3">
     <div class="row justify-content-start">
         <div class="offset-1 col-6">
             <div class="card">
-                <img class="card-img-top" src="http://placekitten.com/g/200/300" alt="">
-                <div class="card-body">
-                    <span class="card-text">${this.genre}</span>
-                    <span class="card-text">${this.author}</span>
-                </div>
+                <img class="card-img-top" src="${this.imgUrl}" alt="">
+                <div class="card-body d-flex justify-content-between">
+                <span>
+                    <span class="card-text">Genre: ${this.genre}</span>
+                    <span class="card-text">Author: ${this.author}</span>
+                </span>
+                <span>    
+                    <span type="button" onclick="app.postsController.deletePost('${this.id}')"><i class="fa fa-times text-danger" aria-hidden="true"></i></span>
+                </span>
+                    </div>
             </div>
         </div>
     </div>

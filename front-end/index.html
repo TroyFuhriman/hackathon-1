@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" href="assets/style.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/style.css">
     <title>front-end</title>
   </head>
 
@@ -17,22 +14,36 @@
       <h1>Can't unscene it</h1>
     </header>
     <main class="container-fluid">
-      <div class="row">
-        <div class="col-12 mt-3">
-          <form
-            onsubmit="app.postsController.newPost(event)"
-            class="form-inline justify-content-around"
-          >
-            <div class="form-group">
-              <label for=""></label>
-              <input
-                type="text"
-                name="title"
-                id="title"
-                class="form-control"
-                placeholder="Title"
-                aria-describedby="helpId"
-              />
+        <div class="row">
+            <div class="col-12 mt-3">
+                <form onsubmit="app.postsController.newPost(event)" class="form-inline justify-content-around">
+                    <div class="form-group ">
+                        <label for=""></label>
+                        <input type="text" name="title" id="title" class="form-control" placeholder="Title"
+                            aria-describedby="helpId">
+                    </div>
+                    <div class="form-group ">
+                        <label for=""></label>
+                        <input type="text" name="url" id="url" class="form-control" placeholder="Url"
+                            aria-describedby="helpId">
+                    </div>
+                    <div class="form-group ">
+                        <label for=""></label>
+                        <select class="form-control" name="genre" type="text">
+                            <option>Comedy</option>
+                            <option>Horror</option>
+                            <option>Drama</option>
+                            <option>Action</option>
+                            <option>Romance</option>
+                        </select>
+                    </div>
+                    <div class="form-group ">
+                        <label for=""></label>
+                        <input type="text" name="author" id="author" class="form-control" placeholder="Author"
+                            aria-describedby="helpId">
+                    </div>
+                    <button class="btn btn-success" type="submit">Submit</button>
+                </form>
             </div>
             <div class="form-group">
               <label for=""></label>
@@ -81,12 +92,9 @@
         </div>
       </div>
     </footer>
-
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"
-      integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ="
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/a8ffab3d3e.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"
+        integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ=" crossorigin="anonymous"></script>
     <script src="app/main.js" type="module"></script>
   </body>
 </html>

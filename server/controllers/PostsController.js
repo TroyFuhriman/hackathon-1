@@ -48,6 +48,7 @@ export class PostsController extends BaseController {
       next(error);
     }
   }
+
   async create(req, res, next) {
     try {
       let data = await postsService.create(req.body);
