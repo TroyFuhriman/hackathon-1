@@ -12,20 +12,25 @@ const postsApi = axios.create({
 });
 
 class CommentsService {
+
+  constructor() {
+
+  }
   async getComments(postId) {
     try {
       let res = await postsApi.get(postId + "/comments");
-      store.commit(
-        "comments",
-        res.data.map((c) => new Comment(c))
-      );
+      console.log(res.data);
+      let comments = res.data.map(c => new Comment(c))
+      store.commit("comments", comments)
+      console.log(store.State.comments);
+
     } catch (e) {
       console.error(e);
     }
   }
   async addComment(commentObj) {
     try {
-      await commentsApi.post("", new Comment(commentObj));
+      await commentsApi.post("", commentObj);
       this.getComments(commentObj.postId);
     } catch (e) {
       console.error(e);

@@ -1,4 +1,4 @@
-import PostsService from "../";
+// import PostsService from "../";
 import store from "../store.js";
 import commentsService from "../Services/CommentsService.js";
 
@@ -16,14 +16,19 @@ export default class CommentsController {
     commentsService.getComments();
   }
 
+  getComments(postId) {
+    commentsService.getComments(postId)
+  }
+
   addComment(event, postId) {
     event.preventDefault();
-    var form = event.taret;
+    var form = event.target;
     var commentObj = {
       description: form.description.value,
       author: form.author.value,
       postId: postId,
     };
+    console.log(commentObj);
     commentsService.addComment(commentObj);
     form.reset();
   }
