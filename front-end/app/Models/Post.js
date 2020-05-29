@@ -40,11 +40,12 @@ export default class Post {
     <h4>Top Comment</h4>
     <p>actual top comment</p>
     <div>
-        <form onsubmit="app.postsController.newComment(event, '${this.id}')">
-            <input type="text" name="text" placeholder="comment">
+        <form onsubmit="app.commentsController.addComment(event, '${this.id}')">
+            <input type="text" name="description" placeholder="comment...">
+            <input type="text" name="author" placeholder ="your name...">
             <button class="btn btn-success" type="submit">add comment</button>
         </form>
-        <button class="btn btn-success">view all comments</button>
+        <button class="btn btn-success" onclick="app.commentsController.getComments('${this.id}')">view all comments</button>
     </div>
 </div>
 <div id="comments">

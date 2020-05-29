@@ -7,6 +7,7 @@ export default class Comment {
     this.edited = data.updatedAt;
     this.upvotes = data.upvotes || 0;
     this.downvotes = data.downvotes || 0;
+    this.postId = data.postId
   }
 
   get Template() {
