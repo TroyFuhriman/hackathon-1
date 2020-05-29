@@ -8,6 +8,7 @@ const postsApi = axios.create({
 })
 
 class PostsService {
+
   constructor() {
     this.getPosts()
   }
@@ -27,6 +28,16 @@ class PostsService {
       .then(res => {
         this.getPosts()
       })
+      .catch(e => console.error(e))
+  }
+
+  deletePost(id) {
+    postsApi.delete(id)
+      .then(res => {
+        this.getPosts()
+        console.log(res)
+      })
+      .catch(e => console.error(e))
   }
 }
 

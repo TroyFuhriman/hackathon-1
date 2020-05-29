@@ -27,4 +27,8 @@ export default class PostsController {
     postsService.newPost(post)
     formdata.reset
   }
+
+  deletePost(id) {
+    postsService.deletePost(id)
+  }
 }
