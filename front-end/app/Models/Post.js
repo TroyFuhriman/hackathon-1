@@ -1,16 +1,18 @@
 export default class Post {
-  constructor(data) {
-    this.title = data.title
-    this.author = data.author
-    this.genre = data.genre
-    this.imgUrl = data.imgUrl
-    this.upVote = data.upvote || 0
-    this.downVote = data.downvote || 0
-    this.id = data.id
-  }
+    constructor(data) {
+        this.title = data.title
+        this.author = data.author
+        this.genre = data.genre
+        this.imgUrl = data.imgUrl
+        this.upVote = data.upvote || 0
+        this.downVote = data.downvote || 0
+        this.id = data.id
+        this.created = data.createdAt
+        this.edited = data.updatedAt
+    }
 
-  get Template() {
-    return /*html*/ `
+    get Template() {
+        return /*html*/ `
     <div class="col-3">
     <div type="button" onclick="app.postsController.upVote('${this.id}')">upvote ${this.upVote}</div>
     <div type="button" onclick="app.postsController.downVote('${this.id}')">downvote ${this.downVote}
@@ -43,5 +45,5 @@ export default class Post {
 <div id="comments">
 </div>
     `
-  }
+    }
 }
