@@ -1,22 +1,20 @@
 import express from "express";
 import BaseController from "../utils/BaseController";
-import { postsService } from "../services/PostsService";
 import { commentsService } from "../services/CommentsService";
 
-export class PostsController extends BaseController {
+export class CommentsController extends BaseController {
   constructor() {
-    super("api/posts");
+    super("api/comments");
     this.router
       .get("", this.getAll)
       .get("/:id", this.getById)
-      .get("/:id/comments", this.getCommentsByPostId)
       .post("", this.create)
       .put("/:id", this.edit)
       .delete("/:id", this.delete);
   }
   async getAll(req, res, next) {
     try {
-      let data = await postsService.find(req.query);
+      let data = await commentsService.find(req.query);
       return res.send(data);
     } catch (error) {
       next(error);
@@ -24,16 +22,7 @@ export class PostsController extends BaseController {
   }
   async getById(req, res, next) {
     try {
-      let data = await postsService.findById(req.params.id);
-      return res.send(data);
-    } catch (error) {
-      next(error);
-    }
-  }
-
-  async getCommentsByPostId(req, res, next) {
-    try {
-      let data = await commentsService.find({ postId: req.params.id });
+      let data = await commentsService.findById(req.params.id);
       return res.send(data);
     } catch (error) {
       next(error);
@@ -42,7 +31,7 @@ export class PostsController extends BaseController {
   async edit(req, res, next) {
     try {
       req.body.id = req.params.id;
-      let data = await postsService.edit(req.body);
+      let data = await commentsService.edit(req.body);
       return res.send(data);
     } catch (error) {
       next(error);
@@ -50,7 +39,7 @@ export class PostsController extends BaseController {
   }
   async create(req, res, next) {
     try {
-      let data = await postsService.create(req.body);
+      let data = await commentsService.create(req.body);
       res.send(data);
     } catch (error) {
       next(error);
@@ -58,8 +47,8 @@ export class PostsController extends BaseController {
   }
   async delete(req, res, next) {
     try {
-      await postsService.delete(req.params.id);
-      return res.send("Post Deleted");
+      await commentsService.delete(req.params.id);
+      return res.send("Comment Deleted");
     } catch (error) {
       next(error);
     }
