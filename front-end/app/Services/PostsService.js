@@ -3,7 +3,7 @@ import Post from "../Models/Post.js";
 
 // @ts-ignore
 const postsApi = axios.create({
-  baseURL: "//localhost:3000/api/posts",
+  baseURL: "//localhost:3000/api/posts/",
   timeout: 3000
 })
 
@@ -15,8 +15,9 @@ class PostsService {
     postsApi.get("")
       .then(res => {
         let data = res.data
-        // store.commit("posts", data)
-        console.log(data)
+        let newPost = data.map(p => new Post(p))
+        store.commit("posts", newPost)
+        console.log(store.State.posts)
       })
   }
 
