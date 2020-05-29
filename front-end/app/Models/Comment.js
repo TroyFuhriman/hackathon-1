@@ -3,10 +3,10 @@ export default class Comment {
     this.description = data.description;
     this.id = data.id;
     this.author = data.author;
-    this.created = data.createdAt;
-    this.edited = data.updatedAt;
-    this.upvotes = data.upvotes || 0;
-    this.downvotes = data.downvotes || 0;
+    this.created = "" || data.createdAt;
+    this.edited = "" || data.updatedAt;
+    this.upvotes = 0 || data.upvotes;
+    this.downvotes = 0 || data.downvotes;
     this.postId = data.postId
   }
 
