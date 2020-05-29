@@ -25,10 +25,12 @@ export default class PostsController {
       imgUrl: formdata.url.value
     }
     postsService.newPost(post)
-    formdata.reset
+    formdata.reset()
   }
 
   deletePost(id) {
-    postsService.deletePost(id)
+    if (window.confirm("are you sure you want to delete this post?")) {
+      postsService.deletePost(id)
+    }
   }
 }
