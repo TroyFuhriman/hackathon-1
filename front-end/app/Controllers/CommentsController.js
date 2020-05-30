@@ -54,6 +54,8 @@ export default class CommentsController {
   }
 
   removeComment(commentId) {
-    commentsService.removeComment(commentId);
+    if (window.confirm("are you sure you want to delete this comment?")) {
+      commentsService.removeComment(commentId);
+    }
   }
 }

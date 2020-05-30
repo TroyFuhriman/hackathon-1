@@ -28,7 +28,7 @@ export default class Post {
         <div class="card">
             <img class="card-img-top" src="${this.imgUrl}" alt="">
             <div class="card-body d-flex justify-content-between">
-                <span class="card-text">Genre: ${this.genre} | Posted by: ${this.author}</span>
+                <span class="card-text">Genre: ${this.genre} | Posted by: ${this.author} | Created: ${this.created}</span>
                 <span type="button" onclick="app.postsController.deletePost('${this.id}')"><i class="fa fa-trash-alt text-danger" aria-hidden="true"></i></span>
             </div>
         </div>
