@@ -5,6 +5,19 @@ import commentsService from "../Services/CommentsService.js";
 //Private
 function _draw() {
   let comments = store.State.comments;
+  function compare(a, b) {
+    const upvoteA = (a.upvotes - a.downvotes)
+    const upvoteB = (b.upvotes - b.downvotes)
+
+    let comparison = 0;
+    if (upvoteA < upvoteB) {
+      comparison = 1;
+    } else if (upvoteA > upvoteB) {
+      comparison = -1;
+    }
+    return comparison;
+  }
+  comments.sort(compare)
   console.log(comments)
   let template = ""
   comments.forEach(c => document.getElementById(c.postId).innerHTML = template += c.Template)
