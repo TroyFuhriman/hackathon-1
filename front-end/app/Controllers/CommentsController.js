@@ -54,7 +54,7 @@ export default class CommentsController {
       };
       console.log(commentObj);
       commentsService.addComment(commentObj);
-    } window.alert("You can only put incorrect answers. Duh!")
+    } else { window.alert("You can only put incorrect answers. Duh!") }
 
     form.reset();
   }
