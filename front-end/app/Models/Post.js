@@ -1,21 +1,21 @@
 export default class Post {
-    constructor(data) {
-        this.title = data.title;
-        this.author = data.author;
-        this.genre = data.genre;
-        this.imgUrl = data.imgUrl;
-        this.upvotes = data.upvotes || 0;
-        this.downvotes = data.downvotes || 0;
-        this.id = data.id;
-        this.created = new Date(data.createdAt).toLocaleDateString("eu-US", {
-            month: "short",
-            day: "numeric",
-        });
-        this.edited = data.updatedAt;
-    }
+  constructor(data) {
+    this.title = data.title;
+    this.author = data.author;
+    this.genre = data.genre;
+    this.imgUrl = data.imgUrl;
+    this.upvotes = data.upvotes || 0;
+    this.downvotes = data.downvotes || 0;
+    this.id = data.id;
+    this.created = new Date(data.createdAt).toLocaleDateString("eu-US", {
+      month: "short",
+      day: "numeric",
+    });
+    this.edited = data.updatedAt;
+  }
 
-    get Template() {
-        return /*html*/ `
+  get Template() {
+    return /*html*/ `
     <div class="row d-flex justify-content-center border border-light"> 
     <div class="col-1 mt-3 text-right d-flex flex-column justify-content-center align-items-center p-0">
         <div class="d-flex align-items-center my-2">
@@ -33,9 +33,9 @@ export default class Post {
     <div class="col-md-6 col-10 mt-3 text-right pr-5">
         <div class="card shadow">
             <img class="card-img-top" src="${this.imgUrl}" alt="">
-            <div class="card-body d-flex justify-content-between">
-                <span class="card-text">Genre: ${this.genre} | Posted by: ${this.author} | Created: '${this.created}'</span>
-                <span type="button" onclick="app.postsController.deletePost('${this.id}')"><i class="fa fa-trash-alt text-danger action" aria-hidden="true"></i></span>
+            <div class="card-body d-flex justify-content-between p-2">
+                <span class="card-text text-left">Genre: ${this.genre} | Posted by: ${this.author} | Created: '${this.created}'</span>
+                <span class="text-right" type="button" onclick="app.postsController.deletePost('${this.id}')"><i class="fa fa-trash-alt text-danger action" aria-hidden="true"></i></span>
             </div>
         </div>
     </div>
@@ -57,7 +57,7 @@ export default class Post {
     </div>
     </div>
     `;
-    }
+  }
 }
 
 // <!-- COMMENT TEMPLATE -->
