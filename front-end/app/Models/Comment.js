@@ -13,7 +13,7 @@ export default class Comment {
   get Template() {
     return /*html*/ `
           <!-- COMMENT TEMPLATE -->
-          <div class="row d-flex border-top mx-5">
+          <div class="row d-flex bg-light border opacity rounded mx-5">
           <div class="col-3 text-right">
           <div>
               ${this.upvotes}&nbsp;

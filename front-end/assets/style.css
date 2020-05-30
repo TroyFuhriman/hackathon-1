@@ -33,3 +33,11 @@ header{
 .bg-cadet-blue{
   background-color: cadetblue;
 }
+.action{
+  opacity: .8;
+  transition: .3s;
+}
+.action:hover{
+  opacity: 1;
+  text-shadow: .25px .25px darkslategrey;
+}
