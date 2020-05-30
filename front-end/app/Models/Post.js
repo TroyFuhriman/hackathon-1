@@ -36,7 +36,7 @@ export default class Post {
     <div class="col-1"></div>
     <div class="col-11 offset-1 text-center">
         <div class="">
-            <form class="mb-3" onsubmit="app.commentsController.addComment(event, '${this.id}')">
+            <form class="my-3" onsubmit="app.commentsController.addComment(event, '${this.id}')">
                 <input type="text" name="description" placeholder="comment...">
                 <input type="text" name="author" placeholder ="your name...">
                 <button class="btn btn-success" type="submit">add comment</button>
@@ -45,6 +45,7 @@ export default class Post {
             <div id="${this.id}"></div>
             <!-- END ADDITIONAL HIDDEN COMMENTS -->
             <button class="btn btn-success" onclick="app.commentsController.getComments('${this.id}')">view all comments</button>
+            <button class="btn btn-success" onclick="app.commentsController.hideComments('${this.id}')">hide all comments</button>
         </div>
     </div>
     <div id="comments">

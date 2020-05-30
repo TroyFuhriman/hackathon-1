@@ -23,6 +23,11 @@ function _draw() {
   comments.forEach(c => document.getElementById(c.postId).innerHTML = template += c.Template)
 }
 
+function _drawHidden(postId) {
+  let template = ''
+  document.getElementById(postId).innerHTML = template
+}
+
 //Public
 export default class CommentsController {
   constructor() {
@@ -31,6 +36,10 @@ export default class CommentsController {
 
   getComments(postId) {
     commentsService.getComments(postId)
+  }
+
+  hideComments(postId) {
+    _drawHidden(postId)
   }
 
   addComment(event, postId) {
