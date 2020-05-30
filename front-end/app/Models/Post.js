@@ -30,7 +30,7 @@ export default class Post {
     </div>
 
     <div class="col-md-6 col-10 mt-3 text-right pr-5">
-        <div class="card">
+        <div class="card shadow">
             <img class="card-img-top" src="${this.imgUrl}" alt="">
             <div class="card-body d-flex justify-content-between">
                 <span class="card-text">Genre: ${this.genre} | Posted by: ${this.author} | Created: '${this.created}'</span>
@@ -41,8 +41,8 @@ export default class Post {
     <div class="col-11 offset-1 text-center mb-3">
         <div class="">
             <form class="my-3 form-inline justify-content-center" onsubmit="app.commentsController.addComment(event, '${this.id}')">
-            <input type="text" class="form-control opacity" name="description" placeholder=" comment...">
-                <input type="text" class="form-control opacity" name="author" placeholder =" your name...">
+            <input type="text" class="form-control opacity" name="description" required placeholder=" comment...">
+                <input type="text" class="form-control opacity" name="author" required placeholder =" your name...">
                 <button class="btn btn-success" type="submit"> add comment</button>
             </form>
             <!-- ADDITIONAL HIDDEN COMMENTS -->

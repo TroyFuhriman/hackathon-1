@@ -37,12 +37,13 @@
         <form onsubmit="app.postsController.newPost(event)" class="form-inline justify-content-around">
           <div class="form-group">
             <label for=""></label>
-            <input type="text" name="title" id="title" class="form-control" placeholder="Title"
+            <input type="text" name="title" id="title" class="form-control" required placeholder="Title"
               aria-describedby="helpId" />
           </div>
           <div class="form-group">
             <label for=""></label>
-            <input type="text" name="url" id="url" class="form-control" placeholder="Url" aria-describedby="helpId" />
+            <input type="text" name="url" id="url" class="form-control" required placeholder="Url"
+              aria-describedby="helpId" />
           </div>
           <div class="form-group">
             <label for=""></label>
@@ -56,7 +57,7 @@
           </div>
           <div class="form-group">
             <label for=""></label>
-            <input type="text" name="author" id="author" class="form-control" placeholder="Author"
+            <input type="text" name="author" id="author" class="form-control" required placeholder="Author"
               aria-describedby="helpId" />
           </div>
           <button class="btn btn-outline-secondary btn-primary" type="submit">Submit</button>
