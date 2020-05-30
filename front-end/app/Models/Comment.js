@@ -12,30 +12,36 @@ export default class Comment {
 
   get Template() {
     return /*html*/ `
-          <!-- COMMENT TEMPLATE -->
-          <div class="row d-flex bg-light border opacity rounded mx-5">
-          <div class="col-3 text-right">
+      <!-- COMMENT TEMPLATE -->
+      <div class="row d-flex bg-light border opacity rounded mx-5 mb-1">
+        <div class="col-3 text-right pr-1 align-self-center">
           <div>
-              ${this.upvotes}&nbsp;
-              <i
-                class="far fa-arrow-alt-circle-up text-success action"
-                onclick="app.commentsController.upvote('${this.id}')"
-              ></i>
-            </div>
-            <div>
-               ${this.downvotes}&nbsp;
-              <i
-                class="far fa-arrow-alt-circle-down text-danger action"
-                onclick="app.commentsController.downvote('${this.id}')"
-              ></i>
-            </div>
+            ${this.upvotes}&nbsp;
+            <i
+              class="far fa-arrow-alt-circle-up text-success action"
+              onclick="app.commentsController.upvote('${this.id}')"
+            ></i>
           </div>
-          <div class="col-8 d-flex align-self-center justify-content-between">
-            <span>${this.description}&nbsp; ~${this.author}</span>
-            <span><i class="fa fa-trash-alt text-danger action" onclick="app.commentsController.removeComment('${this.id}')"aria-hidden="true"></i></span>
+          <div>
+            ${this.downvotes}&nbsp;
+            <i
+              class="far fa-arrow-alt-circle-down text-danger action"
+              onclick="app.commentsController.downvote('${this.id}')"
+            ></i>
           </div>
         </div>
-        <!-- END CARD TEMPLATE -->
+        <div class="col-8 d-flex align-self-center justify-content-between pl-2">
+          <span>${this.description}&nbsp; ~${this.author}</span>
+          <span class="align-self-center"
+            ><i
+              class="fa fa-trash-alt text-danger action pl-3 pr-0"
+              onclick="app.commentsController.removeComment('${this.id}')"
+              aria-hidden="true"
+            ></i>
+          </span>
+        </div>
+      </div>
+      <!-- END CARD TEMPLATE -->
     `;
   }
 }
