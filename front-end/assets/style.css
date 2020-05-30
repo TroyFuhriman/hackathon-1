@@ -21,5 +21,15 @@ main {
   }}
 
   .form-group{
-    opacity: 50%;
+    opacity: 70%;
   }
+  .opacity{
+    opacity: 70%;
+  }
+header{
+  font-family: 'Monoton', cursive;
+}
+
+.bg-cadet-blue{
+  background-color: cadetblue;
+}
