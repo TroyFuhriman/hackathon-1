@@ -4,36 +4,39 @@ export default class Post {
         this.author = data.author;
         this.genre = data.genre;
         this.imgUrl = data.imgUrl;
-        this.upVote = data.upvote || 0;
-        this.downVote = data.downvote || 0;
+        this.upvotes = data.upvotes || 0;
+        this.downvotes = data.downvotes || 0;
         this.id = data.id;
-        this.created = data.createdAt;
+        this.created = new Date(data.createdAt).toLocaleDateString("eu-US", {
+            month: "short",
+            day: "numeric"
+        });
         this.edited = data.updatedAt;
+
     }
 
     get Template() {
         return /*html*/ `
-    <div class="col-1 mt-3 text-right">
-        <div type="button" onclick="app.postsController.upVote('${this.id}')"><i
-        class="far fa-arrow-alt-circle-up text-success fa-2x"
-        onclick="app.commentsController.upvote('${this.id}')"
-      ></i> ${this.upVote}</div>
-        <div type="button" onclick="app.postsController.downVote('${this.id}')"><i
-        class="far fa-arrow-alt-circle-down text-danger fa-2x"
-        onclick="app.commentsController.upvote('${this.id}')"
-      ></i> ${this.downVote}</div>
+    <div class="col-1 mt-3 text-right d-flex flex-column justify-content-center align-items-center p-0">
+        <div class="d-flex align-items-center justify-content-end my-2"><i
+        class="far fa-arrow-alt-circle-up text-success fa-2x action"
+        onclick="app.postsController.upvote('${this.id}')"
+      ></i> <div class="mx-1">${this.upvotes}</div></div>
+        <div class=" d-flex align-items-center justify-content-end my-2"><i
+        class="far fa-arrow-alt-circle-down text-danger fa-2x action"
+        onclick="app.postsController.downvote('${this.id}')"
+      ></i> <div class="mx-1">${this.downvotes}</div></div>
     </div>
 
-    <div class="col-11 mt-3 text-right pr-5">
+    <div class="col-5 mt-3 text-right pr-5">
         <div class="card">
             <img class="card-img-top" src="${this.imgUrl}" alt="">
             <div class="card-body d-flex justify-content-between">
-                <span class="card-text">Genre: ${this.genre} | Posted by: ${this.author} | Created: ${this.created}</span>
+                <span class="card-text">Genre: ${this.genre} | Posted by: ${this.author} | Created: '${this.created}'</span>
                 <span type="button" onclick="app.postsController.deletePost('${this.id}')"><i class="fa fa-trash-alt text-danger" aria-hidden="true"></i></span>
             </div>
         </div>
     </div>
-    <div class="col-1"></div>
     <div class="col-11 offset-1 text-center">
         <div class="">
             <form class="my-3" onsubmit="app.commentsController.addComment(event, '${this.id}')">
