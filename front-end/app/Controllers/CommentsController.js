@@ -5,6 +5,7 @@ import commentsService from "../Services/CommentsService.js";
 //Private
 function _draw() {
   let comments = store.State.comments;
+  let activePost = store.State.activePost;
   function compare(a, b) {
     const upvoteA = (a.upvotes - a.downvotes)
     const upvoteB = (b.upvotes - b.downvotes)
@@ -20,7 +21,8 @@ function _draw() {
   comments.sort(compare)
   console.log(comments)
   let template = ""
-  comments.forEach(c => document.getElementById(c.postId).innerHTML = template += c.Template)
+  comments.forEach(c => template += c.Template)
+  document.getElementById(activePost.id).innerHTML = template
 }
 
 function _drawHidden(postId) {
