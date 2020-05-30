@@ -1,21 +1,21 @@
 export default class Post {
-  constructor(data) {
-    this.title = data.title;
-    this.author = data.author;
-    this.genre = data.genre;
-    this.imgUrl = data.imgUrl;
-    this.upvotes = data.upvotes || 0;
-    this.downvotes = data.downvotes || 0;
-    this.id = data.id;
-    this.created = new Date(data.createdAt).toLocaleDateString("eu-US", {
-      month: "short",
-      day: "numeric",
-    });
-    this.edited = data.updatedAt;
-  }
+    constructor(data) {
+        this.title = data.title;
+        this.author = data.author;
+        this.genre = data.genre;
+        this.imgUrl = data.imgUrl;
+        this.upvotes = data.upvotes || 0;
+        this.downvotes = data.downvotes || 0;
+        this.id = data.id;
+        this.created = new Date(data.createdAt).toLocaleDateString("eu-US", {
+            month: "short",
+            day: "numeric",
+        });
+        this.edited = data.updatedAt;
+    }
 
-  get Template() {
-    return /*html*/ `
+    get Template() {
+        return /*html*/ `
     <div class="row d-flex justify-content-center border border-light"> 
     <div class="col-1 mt-3 text-right d-flex flex-column justify-content-center align-items-center p-0">
         <div class="d-flex align-items-center my-2">
@@ -35,7 +35,7 @@ export default class Post {
             <img class="card-img-top" src="${this.imgUrl}" alt="">
             <div class="card-body d-flex justify-content-between">
                 <span class="card-text">Genre: ${this.genre} | Posted by: ${this.author} | Created: '${this.created}'</span>
-                <span type="button" onclick="app.postsController.deletePost('${this.id}')"><i class="fa fa-trash-alt text-danger" aria-hidden="true"></i></span>
+                <span type="button" onclick="app.postsController.deletePost('${this.id}')"><i class="fa fa-trash-alt text-danger action" aria-hidden="true"></i></span>
             </div>
         </div>
     </div>
@@ -44,20 +44,20 @@ export default class Post {
             <form class="my-3 form-inline justify-content-center" onsubmit="app.commentsController.addComment(event, '${this.id}')">
             <input type="text" class="form-control opacity" name="description" required placeholder=" comment...">
                 <input type="text" class="form-control opacity" name="author" required placeholder =" your name...">
-                <button class="btn btn-success" type="submit"> add comment</button>
+                <button class="btn btn-primary btn-outline-secondary" type="submit"> add comment</button>
             </form>
             <!-- ADDITIONAL HIDDEN COMMENTS -->
             <div id="${this.id}"></div>
             <!-- END ADDITIONAL HIDDEN COMMENTS -->
-            <button class="btn btn-success" onclick="app.commentsController.getComments('${this.id}')"> view all comments</button>
-            <button class="btn btn-success" onclick="app.commentsController.hideComments('${this.id}')"> hide all comments</button>
+            <button class="btn btn-primary btn-outline-secondary mt-2" onclick="app.commentsController.getComments('${this.id}')"> view all comments</button>
+            <button class="btn btn-primary btn-outline-secondary mt-2" onclick="app.commentsController.hideComments('${this.id}')"> hide all comments</button>
         </div>
     </div>
     <div id="comments">
     </div>
     </div>
     `;
-  }
+    }
 }
 
 // <!-- COMMENT TEMPLATE -->
