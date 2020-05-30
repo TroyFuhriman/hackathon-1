@@ -11,3 +11,15 @@ main {
 .action {
   cursor: pointer;
 }
+.text-shadow{
+  text-shadow: 1px 1px black;
+}
+
+@media only screen and (max-width: 600px){
+  .form-inline{
+    display: block;
+  }}
+
+  .form-group{
+    opacity: 50%;
+  }
