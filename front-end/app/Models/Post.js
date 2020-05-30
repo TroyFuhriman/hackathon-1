@@ -9,24 +9,25 @@ export default class Post {
     this.id = data.id;
     this.created = new Date(data.createdAt).toLocaleDateString("eu-US", {
       month: "short",
-      day: "numeric"
+      day: "numeric",
     });
     this.edited = data.updatedAt;
-
   }
 
   get Template() {
     return /*html*/ `
     <div class="row d-flex justify-content-center border border-light"> 
     <div class="col-1 mt-3 text-right d-flex flex-column justify-content-center align-items-center p-0">
-        <div class="d-flex align-items-center justify-content-end my-2"><i
-        class="far fa-arrow-alt-circle-up text-success fa-2x action"
-        onclick="app.postsController.upvote('${this.id}')"
-      ></i> <div class="mx-1">${this.upvotes}</div></div>
-        <div class=" d-flex align-items-center justify-content-end my-2"><i
-        class="far fa-arrow-alt-circle-down text-danger fa-2x action"
-        onclick="app.postsController.downvote('${this.id}')"
-      ></i> <div class="mx-1">${this.downvotes}</div></div>
+        <div class="d-flex align-items-center my-2">
+            <div class="font-weight-bold">${this.upvotes}&nbsp;</div>
+            <i class="far fa-arrow-alt-circle-up text-success fa-2x action"
+            onclick="app.postsController.upvote('${this.id}')"></i>
+        </div>
+        <div class=" d-flex align-items-center my-2">
+            <div class="font-weight-bold">${this.downvotes}&nbsp;</div>
+            <i class="far fa-arrow-alt-circle-down text-danger fa-2x action"
+             onclick="app.postsController.downvote('${this.id}')"></i>
+        </div>
     </div>
 
     <div class="col-md-6 col-10 mt-3 text-right pr-5">
