@@ -1,18 +1,18 @@
 export default class Post {
-    constructor(data) {
-        this.title = data.title;
-        this.author = data.author;
-        this.genre = data.genre;
-        this.imgUrl = data.imgUrl;
-        this.upVote = data.upvote || 0;
-        this.downVote = data.downvote || 0;
-        this.id = data.id;
-        this.created = data.createdAt;
-        this.edited = data.updatedAt;
-    }
+  constructor(data) {
+    this.title = data.title;
+    this.author = data.author;
+    this.genre = data.genre;
+    this.imgUrl = data.imgUrl;
+    this.upVote = data.upvote || 0;
+    this.downVote = data.downvote || 0;
+    this.id = data.id;
+    this.created = data.createdAt;
+    this.edited = data.updatedAt;
+  }
 
-    get Template() {
-        return /*html*/ `
+  get Template() {
+    return /*html*/ `
     <div class="col-1 mt-3 text-right">
         <div type="button" onclick="app.postsController.upVote('${this.id}')"><i
         class="far fa-arrow-alt-circle-up text-success fa-2x"
@@ -36,9 +36,10 @@ export default class Post {
     <div class="col-1"></div>
     <div class="col-11 offset-1 text-center">
         <h4>Top Comment</h4>
-        <p>actual top comment</p>
-        <div>
-            <form onsubmit="app.commentsController.addComment(event, '${this.id}')">
+        <!-- INSERT TOP COMMENT HERE -->
+        <p id="${this.id}" class="">actual top comment</p>
+        <div class="">
+            <form class="mb-3" onsubmit="app.commentsController.addComment(event, '${this.id}')">
                 <input type="text" name="description" placeholder="comment...">
                 <input type="text" name="author" placeholder ="your name...">
                 <button class="btn btn-success" type="submit">add comment</button>
@@ -52,7 +53,7 @@ export default class Post {
     <div id="comments">
     </div>
     `;
-    }
+  }
 }
 
 // <!-- COMMENT TEMPLATE -->
