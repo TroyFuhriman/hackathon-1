@@ -17,14 +17,14 @@ export default class Comment {
           <div class="col-3 text-right">
             <div>
               <i
-                class="far fa-arrow-alt-circle-up text-success"
+                class="far fa-arrow-alt-circle-up text-success action"
                 onclick="app.commentsController.upvote('${this.id}')"
               ></i>
               ${this.upvotes}
             </div>
             <div>
               <i
-                class="far fa-arrow-alt-circle-down text-danger"
+                class="far fa-arrow-alt-circle-down text-danger action"
                 onclick="app.commentsController.downvote('${this.id}')"
               ></i>
               ${this.downvotes}

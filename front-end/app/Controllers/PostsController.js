@@ -5,6 +5,19 @@ import store from "../store.js";
 function _draw() {
   let posts = store.State.posts;
   let template = ""
+  function compare(a, b) {
+    const upvoteA = (a.upvotes - a.downvotes)
+    const upvoteB = (b.upvotes - b.downvotes)
+
+    let comparison = 0;
+    if (upvoteA < upvoteB) {
+      comparison = 1;
+    } else if (upvoteA > upvoteB) {
+      comparison = -1;
+    }
+    return comparison;
+  }
+  posts.sort(compare)
   posts.forEach(p => template += p.Template)
   document.getElementById("posts").innerHTML = template
 }
@@ -32,5 +45,13 @@ export default class PostsController {
     if (window.confirm("are you sure you want to delete this post?")) {
       postsService.deletePost(id)
     }
+  }
+
+  upvote(postId) {
+    postsService.upvote(postId)
+  }
+
+  downvote(postId) {
+    postsService.downvote(postId)
   }
 }

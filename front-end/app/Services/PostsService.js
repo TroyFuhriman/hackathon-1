@@ -9,6 +9,7 @@ const postsApi = axios.create({
 
 class PostsService {
 
+
   constructor() {
     this.getPosts()
   }
@@ -20,6 +21,8 @@ class PostsService {
         store.commit("posts", newPost)
       })
   }
+
+  async
 
 
   newPost(post) {
@@ -38,7 +41,40 @@ class PostsService {
       })
       .catch(e => console.error(e))
   }
+
+  async downvote(postId) {
+    try {
+      let post = store.State.posts.find(c => c.id == postId);
+      post.downvotes++;
+      await postsApi.put(postId, post);
+      this.getPosts()
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  async upvote(postId) {
+    try {
+      let post = store.State.posts.find(p => p.id == postId);
+      post.upvotes++
+      await postsApi.put(postId, { upvotes: post.upvotes });
+      store.commit("posts", store.State.posts)
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }
 
 const postsService = new PostsService();
 export default postsService;
+
+
+// todoObj.completed = !todoObj.completed;
+// // todoObj.completed
+// //   ? (todoObj.completed = false)
+// //   : (todoObj.completed = true);
+// //console.log(todoObj.completed + "after ternary");
+// todoApi.put(todoId, { completed: todoObj.completed }).then((res) => {
+//   //this.getTodos();
+//   store.commit("todos", store.State.todos);
+// });
+//     }
