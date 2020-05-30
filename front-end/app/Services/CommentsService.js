@@ -1,4 +1,5 @@
 import store from "../store.js";
+import Comment from "../Models/Comment.js"
 
 // @ts-ignore
 const commentsApi = axios.create({
@@ -19,22 +20,12 @@ class CommentsService {
   async getComments(postId) {
     try {
       let res = await postsApi.get(postId + "/comments");
-      // let comments = res.data.map(c => new Comment(c))
-      store.commit("comments", res.data);
+      let comments = res.data.map(c => new Comment(c))
+      store.commit("comments", comments);
     } catch (e) {
       console.error(e);
     }
   }
-
-  // getComments(postId) {
-  //   commentsApi.get(postId + "/comments")
-  //     .then(res => {
-  //       console.log(res);
-
-  //       let newComment = res.data.map(nc => new Comment(nc))
-  //       store.commit("comments", newComment)
-  //     })
-  // }
   async addComment(commentObj) {
     try {
       await commentsApi.post("", commentObj);
@@ -45,20 +36,20 @@ class CommentsService {
   }
   async upvote(commentId) {
     try {
-      let comment = store.State.comment.find((c) => c.id == commentId);
-      comment.upvotes++;
+      let comment = store.State.comments.find(c => c.id == commentId);
+      comment.upvotes++
       await commentsApi.put(commentId, comment);
-      store.commit("comments", comment);
+      this.getComments(comment.postId)
     } catch (error) {
       console.error(error);
     }
   }
   async downvote(commentId) {
     try {
-      let comment = store.State.comment.find((c) => c.id == commentId);
+      let comment = store.State.comments.find(c => c.id == commentId);
       comment.downvotes++;
       await commentsApi.put(commentId, comment);
-      store.commit("comments", comment);
+      this.getComments(comment.postId)
     } catch (error) {
       console.error(error);
     }
