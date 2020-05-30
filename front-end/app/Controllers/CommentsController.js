@@ -44,14 +44,18 @@ export default class CommentsController {
 
   addComment(event, postId) {
     event.preventDefault();
-    var form = event.target;
-    var commentObj = {
-      description: form.description.value,
-      author: form.author.value,
-      postId: postId,
-    };
-    console.log(commentObj);
-    commentsService.addComment(commentObj);
+    let form = event.target;
+    let post = store.State.posts.find(p => p.id == postId)
+    if (form.description.value.toLowerCase() != post.title.toLowerCase()) {
+      let commentObj = {
+        description: form.description.value,
+        author: form.author.value,
+        postId: postId,
+      };
+      console.log(commentObj);
+      commentsService.addComment(commentObj);
+    } window.alert("You can only put incorrect answers. Duh!")
+
     form.reset();
   }
 
