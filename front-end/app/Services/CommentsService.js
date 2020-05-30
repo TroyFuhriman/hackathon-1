@@ -55,10 +55,16 @@ class CommentsService {
     }
   }
   async removeComment(commentId) {
-    await commentsApi.delete(commentId);
-    store.commit("comments", store.State.comment);
+    try {
+      let comment = store.State.comments.find(c => c.id == commentId);
+      await commentsApi.delete(commentId);
+      this.getComments(comment.postId)
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
+
 
 const commentsService = new CommentsService();
 export default commentsService;
