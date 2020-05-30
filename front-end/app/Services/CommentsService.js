@@ -19,10 +19,8 @@ class CommentsService {
   async getComments(postId) {
     try {
       let res = await postsApi.get(postId + "/comments");
-      console.log(res.data);
       // let comments = res.data.map(c => new Comment(c))
       store.commit("comments", res.data);
-      console.log(store.State.comments);
     } catch (e) {
       console.error(e);
     }
