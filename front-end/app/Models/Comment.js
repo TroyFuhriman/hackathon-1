@@ -15,19 +15,19 @@ export default class Comment {
           <!-- COMMENT TEMPLATE -->
           <div class="row d-flex border-top mx-5">
           <div class="col-3 text-right">
-            <div>
+          <div>
+              ${this.upvotes}&nbsp;
               <i
                 class="far fa-arrow-alt-circle-up text-success action"
                 onclick="app.commentsController.upvote('${this.id}')"
               ></i>
-              ${this.upvotes}
             </div>
             <div>
+               ${this.downvotes}&nbsp;
               <i
                 class="far fa-arrow-alt-circle-down text-danger action"
                 onclick="app.commentsController.downvote('${this.id}')"
               ></i>
-              ${this.downvotes}
             </div>
           </div>
           <div class="col-8 d-flex align-self-center justify-content-between">

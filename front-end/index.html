@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
   <link rel="stylesheet" href="assets/flatly.css">
+  <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css" />
   <title>Scene It</title>
 </head>
@@ -25,14 +26,14 @@
       </div>
     </div>
   </header>
-  <main class="container bg-dark">
+  <main class="container bg-cadet-blue">
     <div class="row justify-content-center">
-      <div class="col-md-3 col-12 text-center text-warning mt-5">
+      <div class="col-md-3 col-12 text-center text-light text-shadow mt-5">
         <p>Post a favorite movie picture and only comment wrong answers!</p>
       </div>
     </div>
     <div class="row">
-      <div class="col-12 mt-md-3 mt-0 text-center">
+      <div class="col-12 mt-md-3 mt-0 text-center mb-3">
         <form onsubmit="app.postsController.newPost(event)" class="form-inline justify-content-around">
           <div class="form-group">
             <label for=""></label>
@@ -58,13 +59,13 @@
             <input type="text" name="author" id="author" class="form-control" placeholder="Author"
               aria-describedby="helpId" />
           </div>
-          <button class="btn btn-outline-success" type="submit">Submit</button>
+          <button class="btn btn-outline-secondary btn-primary" type="submit">Submit</button>
         </form>
       </div>
     </div>
     <!-- END OF FORM ROW -->
 
-    <div class="row d-flex justify-content-center" id="posts"></div>
+    <span id="posts"></span>
   </main>
 
   <footer class="container-fluid bg-primary text-light mt-3">
