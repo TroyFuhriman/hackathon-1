@@ -5,8 +5,10 @@ import commentsService from "../Services/CommentsService.js";
 //Private
 function _draw() {
   let comments = store.State.comments;
-  let template = "";
-  comments.forEach(c => template +=
+  let posts = store.State.posts
+  console.log(comments)
+  let template = ""
+  comments.forEach(c => document.getElementById(c.postId).innerHTML = template +=
     `<div class="row d-flex">
       <div class="col-3">
         <div>
@@ -29,16 +31,13 @@ function _draw() {
         <span>~${c.author}</span>
       </div>
     </div>`)
-  document.getElementById("comments").innerHTML = template
-  console.log(template);
-  console.log(comments)
+
 }
 
 //Public
 export default class CommentsController {
   constructor() {
     store.subscribe("comments", _draw);
-    commentsService.getComments();
   }
 
   getComments(postId) {

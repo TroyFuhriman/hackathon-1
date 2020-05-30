@@ -18,7 +18,6 @@ class PostsService {
         let data = res.data
         let newPost = data.map(p => new Post(p))
         store.commit("posts", newPost)
-        console.log(store.State.posts)
       })
   }
 

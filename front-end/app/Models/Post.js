@@ -1,18 +1,18 @@
 export default class Post {
-  constructor(data) {
-    this.title = data.title;
-    this.author = data.author;
-    this.genre = data.genre;
-    this.imgUrl = data.imgUrl;
-    this.upVote = data.upvote || 0;
-    this.downVote = data.downvote || 0;
-    this.id = data.id;
-    this.created = data.createdAt;
-    this.edited = data.updatedAt;
-  }
+    constructor(data) {
+        this.title = data.title;
+        this.author = data.author;
+        this.genre = data.genre;
+        this.imgUrl = data.imgUrl;
+        this.upVote = data.upvote || 0;
+        this.downVote = data.downvote || 0;
+        this.id = data.id;
+        this.created = data.createdAt;
+        this.edited = data.updatedAt;
+    }
 
-  get Template() {
-    return /*html*/ `
+    get Template() {
+        return /*html*/ `
     <div class="col-1 mt-3 text-right">
         <div type="button" onclick="app.postsController.upVote('${this.id}')"><i
         class="far fa-arrow-alt-circle-up text-success fa-2x"
@@ -44,7 +44,7 @@ export default class Post {
                 <button class="btn btn-success" type="submit">add comment</button>
             </form>
             <!-- ADDITIONAL HIDDEN COMMENTS -->
-            <div id="additionalComments"></div>
+            <div id="${this.id}"></div>
             <!-- END ADDITIONAL HIDDEN COMMENTS -->
             <button class="btn btn-success" onclick="app.commentsController.getComments('${this.id}')">view all comments</button>
         </div>
@@ -52,7 +52,7 @@ export default class Post {
     <div id="comments">
     </div>
     `;
-  }
+    }
 }
 
 // <!-- COMMENT TEMPLATE -->
