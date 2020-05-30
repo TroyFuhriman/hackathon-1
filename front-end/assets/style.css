@@ -19,3 +19,7 @@ main {
   .form-inline{
     display: block;
   }}
+
+  .form-group{
+    opacity: 50%;
+  }
