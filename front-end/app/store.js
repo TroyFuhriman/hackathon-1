@@ -7,6 +7,7 @@ let _state = {
   values: [],
   posts: [],
   comments: [],
+  allComments: [],
   activePost: {}
 };
 
@@ -18,7 +19,8 @@ let _listeners = {
   values: [],
   posts: [],
   comments: [],
-  activePost: []
+  activePost: [],
+  allComments: []
 };
 
 //NOTE You should not need to change the code from this point down
