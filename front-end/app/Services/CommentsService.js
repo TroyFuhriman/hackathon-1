@@ -17,6 +17,17 @@ class CommentsService {
   constructor() {
 
   }
+
+  async getAllComments() {
+    try {
+      let res = await commentsApi.get("");
+      let comments = res.data.map(c => new Comment(c))
+      store.commit("allComments", comments)
+    } catch (e) {
+      console.error(e);
+
+    }
+  }
   async getComments(postId) {
     try {
       let res = await postsApi.get(postId + "/comments");

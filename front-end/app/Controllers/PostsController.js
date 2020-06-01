@@ -22,6 +22,25 @@ function _draw() {
   document.getElementById("posts").innerHTML = template
 }
 
+function _drawByCreated() {
+  let posts = store.State.posts;
+  let template = ""
+  function compare(a, b) {
+    const createdA = a.created
+    const createdB = b.created
+
+    let comparison = 0;
+    if (createdA < createdB) {
+      comparison = 1;
+    } else if (createdA > createdB) {
+      comparison = -1;
+    }
+    return comparison;
+  }
+  posts.sort(compare)
+  posts.forEach(p => template += p.Template)
+  document.getElementById("posts").innerHTML = template
+}
 //Public
 export default class PostsController {
   constructor() {
@@ -53,5 +72,13 @@ export default class PostsController {
 
   downvote(postId) {
     postsService.downvote(postId)
+  }
+
+  sortVotes() {
+    _draw()
+  }
+
+  sortCreated() {
+    _drawByCreated()
   }
 }

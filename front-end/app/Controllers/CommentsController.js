@@ -30,10 +30,15 @@ function _drawHidden(postId) {
   document.getElementById(postId).innerHTML = template
 }
 
+function _drawAllTop() {
+
+}
+
 //Public
 export default class CommentsController {
   constructor() {
     store.subscribe("comments", _draw);
+    store.subscribe("allComments", _drawAllTop)
   }
 
   getComments(postId) {
