@@ -71,9 +71,13 @@
     </div>
     <!-- END OF FORM ROW -->
     <div class="row">
-      <div class="col-4 d-flex ">
-        <button class="mx-1" onclick="app.postsController.sortVotes()">sort by votes</button>
-        <button class="mx-1" onclick="app.postsController.sortCreated()">sort by created</button>
+      <div class="col-4 d-flex align-items-center">
+        <span>Sort By:</span>
+        <button class="m-1 btn btn-outline-secondary btn-primary"
+          onclick="app.postsController.sortVotes()">Votes</button>
+        <span>|</span>
+        <button class="m-1 btn btn-outline-secondary btn-primary"
+          onclick="app.postsController.sortCreated()">Newest</button>
       </div>
     </div>
 
