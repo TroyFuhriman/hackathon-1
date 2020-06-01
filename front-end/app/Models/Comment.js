@@ -3,7 +3,15 @@ export default class Comment {
     this.description = data.description;
     this.id = data.id;
     this.author = data.author;
-    this.created = "" || data.createdAt;
+    this.created =
+      "" ||
+      new Date(data.createdAt).toLocaleDateString("eu-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+      });
     this.edited = "" || data.updatedAt;
     this.upvotes = 0 || data.upvotes;
     this.downvotes = 0 || data.downvotes;
@@ -31,7 +39,7 @@ export default class Comment {
           </div>
         </div>
         <div class="col-8 d-flex align-self-center justify-content-between pl-2">
-          <span>${this.description}&nbsp; ~${this.author}</span>
+          <span>${this.description}&nbsp; ~${this.author} <span class="text-muted font-weight-lighter">(${this.created})</span></span>
           <span class="align-self-center"
             ><i
               class="fa fa-trash-alt text-danger action pl-3 pr-0"
