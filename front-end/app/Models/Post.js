@@ -10,6 +10,7 @@ export default class Post {
     this.created = new Date(data.createdAt).toLocaleDateString("eu-US", {
       month: "short",
       day: "numeric",
+      year: "numeric",
     });
     this.edited = data.updatedAt;
   }
